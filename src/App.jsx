@@ -19,9 +19,20 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://www.omdbapi.com/?apikey=72936f33&s=avengers&type=movie`
+          `https://www.omdbapi.com/?apikey=72936f33&s=avengers&type=movie&plot=full`
         );
-        setMovies(response.data.Search);
+
+        // Extract movie details from the response
+        const movieDetails = await Promise.all(
+          response.data.Search.map(async (movie) => {
+            const movieDetailResponse = await axios.get(
+              `https://www.omdbapi.com/?apikey=72936f33&i=${movie.imdbID}&plot=full`
+            );
+            return movieDetailResponse.data;
+          })
+        );
+
+        setMovies(movieDetails);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -29,6 +40,7 @@ const App = () => {
 
     fetchData();
   }, []);
+
 
   return (
     <div className="App">
@@ -46,6 +58,8 @@ const App = () => {
       </div>
     </div>
   );
+
+  
 };
 
 export default App;
