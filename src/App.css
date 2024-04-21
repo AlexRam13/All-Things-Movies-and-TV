@@ -1,0 +1,57 @@
+
+*,body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Movie card styles */
+.movie-card {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-card h2 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.movie-card p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px;
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  background: rgb(237, 237, 237);
+  margin-bottom: 30px;
+}
